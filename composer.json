@@ -1,6 +1,6 @@
 {
     "name": "nikolaposa/centerr",
-    "description": "Comprehensive and extensible error handling system for PHP",
+    "description": "Robust and extensible error handling system for PHP",
     "type": "library",
     "license": "MIT",
     "keywords": [

@@ -21,9 +21,11 @@ class ErrorHandler implements ErrorHandlerInterface
     protected $processors;
 
     /**
-     * @var Options
+     * @var array
      */
-    protected $options;
+    protected $options = [
+        'blockingErrors' => true,
+    ];
 
     /**
      * @var bool
@@ -35,13 +37,13 @@ class ErrorHandler implements ErrorHandlerInterface
      */
     private $registered = false;
 
-    public function __construct(EmitterInterface $emitter, array $processors, Options $options)
+    public function __construct(EmitterInterface $emitter, array $processors, array $options = [])
     {
         $this->emitter = $emitter;
         $this->processors = $processors;
         $this->options = $options;
 
-        $this->treatErrorsAsExceptions = $options->blockingErrors();
+        $this->treatErrorsAsExceptions = $this->options['blockingErrors'];
     }
 
     final public function register() : void

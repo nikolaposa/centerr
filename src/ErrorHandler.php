@@ -37,11 +37,11 @@ class ErrorHandler implements ErrorHandlerInterface
      */
     private $registered = false;
 
-    public function __construct(EmitterInterface $emitter, array $processors, array $options = [])
+    public function __construct(EmitterInterface $emitter, array $processors = [], array $options = [])
     {
         $this->emitter = $emitter;
         $this->processors = $processors;
-        $this->options = $options;
+        $this->options = array_merge($this->options, $options);
 
         $this->treatErrorsAsExceptions = $this->options['blockingErrors'];
     }
@@ -69,6 +69,11 @@ class ErrorHandler implements ErrorHandlerInterface
         restore_exception_handler();
 
         $this->registered = false;
+    }
+
+    final public function isRegistered() : bool
+    {
+        return $this->registered;
     }
 
     public function handleError(int $level, string $message, string  $file = null, int $line = null) : bool

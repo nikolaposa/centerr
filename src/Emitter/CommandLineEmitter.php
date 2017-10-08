@@ -21,7 +21,7 @@ final class CommandLineEmitter extends AbstractEmitter
             $exception->getMessage()
         );
 
-        if ($this->options->includeTrace()) {
+        if ($this->options['includeTrace']) {
             $output .= "\n\n";
 
             $trace = $exception->getTrace();

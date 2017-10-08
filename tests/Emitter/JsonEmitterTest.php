@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CentErr\Tests\Emitter;
 
 use CentErr\Emitter\EmitterInterface;
-use CentErr\Emitter\EmitterOptions;
 use CentErr\Emitter\JsonEmitter;
 use RuntimeException;
 
@@ -29,6 +28,6 @@ class JsonEmitterTest extends HttpEmitterTestCase
 
     protected function createEmitter(array $options = []) : EmitterInterface
     {
-        return new JsonEmitter(EmitterOptions::create($options));
+        return new JsonEmitter($options);
     }
 }

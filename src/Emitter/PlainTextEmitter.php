@@ -16,7 +16,7 @@ final class PlainTextEmitter extends AbstractHttpEmitter
             $exception->getMessage()
         );
 
-        if ($this->options->includeTrace()) {
+        if ($this->options['includeTrace']) {
             $text .= "\n\n";
 
             $trace = $exception->getTrace();

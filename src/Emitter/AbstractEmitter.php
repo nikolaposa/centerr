@@ -9,13 +9,15 @@ use Throwable;
 abstract class AbstractEmitter implements EmitterInterface
 {
     /**
-     * @var EmitterOptions
+     * @var array
      */
-    protected $options;
+    protected $options = [
+        'includeTrace' => true,
+    ];
 
-    public function __construct(EmitterOptions $options)
+    public function __construct(array $options = [])
     {
-        $this->options = $options;
+        $this->options = array_merge($this->options, $options);
     }
 
     public function emit(Throwable $exception) : void

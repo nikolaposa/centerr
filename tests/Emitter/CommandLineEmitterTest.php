@@ -6,7 +6,6 @@ namespace CentErr\Tests\Emitter;
 
 use CentErr\Emitter\CommandLineEmitter;
 use CentErr\Emitter\EmitterInterface;
-use CentErr\Emitter\EmitterOptions;
 use RuntimeException;
 
 class CommandLineEmitterTest extends EmitterTestCase
@@ -29,6 +28,6 @@ class CommandLineEmitterTest extends EmitterTestCase
 
     protected function createEmitter(array $options = []) : EmitterInterface
     {
-        return new CommandLineEmitter(EmitterOptions::create($options));
+        return new CommandLineEmitter($options);
     }
 }

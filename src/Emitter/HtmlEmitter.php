@@ -21,7 +21,7 @@ final class HtmlEmitter extends AbstractHttpEmitter
     {
         $html = '<p>' . $exception->getMessage() . '</p>';
 
-        if ($this->options->includeTrace()) {
+        if ($this->options['includeTrace']) {
             $html .= "\n";
             $html .= '<strong>Trace:</strong><br>';
             $html .= "\n";

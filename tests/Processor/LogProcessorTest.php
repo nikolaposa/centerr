@@ -18,10 +18,12 @@ class LogProcessorTest extends TestCase
     public function it_logs_any_exception_by_default()
     {
         $loggerSpy = $this->prophesize(LoggerInterface::class);
+        /** @noinspection PhpParamsInspection */
         $processor = new LogProcessor($loggerSpy->reveal());
 
         $processor(new RuntimeException('Cannot connect to the database'));
 
+        /** @noinspection PhpUndefinedMethodInspection */
         $loggerSpy->error('Cannot connect to the database')->shouldHaveBeenCalled();
     }
 
@@ -31,12 +33,14 @@ class LogProcessorTest extends TestCase
     public function it_doesnt_log_exception_of_type_that_shouldnt_be_logged()
     {
         $loggerSpy = $this->prophesize(LoggerInterface::class);
+        /** @noinspection PhpParamsInspection */
         $processor = new LogProcessor($loggerSpy->reveal(), [
             DomainException::class,
         ]);
 
         $processor(new DomainException('Invalid input'));
 
+        /** @noinspection PhpUndefinedMethodInspection */
         $loggerSpy->error('Invalid input')->shouldNotHaveBeenCalled();
     }
 }
